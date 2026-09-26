@@ -1,9 +1,10 @@
 import { useMemo, useState } from "react";
 
-import SearchBar from "../Components/learning/SearchBar"
+import SearchBar from "../Components/learning/SearchBar";
 import SortSelect from "../Components/learning/SortSelect";
 import FilterTabs from "../Components/learning/FilterTabs";
 import GalleryCard from "../Components/learning/GalleryCard";
+import GalleryModal from "../Components/learning/GalleryModal";
 
 import learningData from "../data/gallery";
 
@@ -12,10 +13,15 @@ export default function Gallery() {
   const [selectedTopic, setSelectedTopic] = useState("All");
   const [sortBy, setSortBy] = useState("relevant");
 
+  // Stores the gallery item currently open in the modal
+  const [selectedItem, setSelectedItem] = useState(null);
+
   const filteredContent = useMemo(() => {
     let results = [...learningData];
 
+    // =========================
     // SEARCH
+    // =========================
     if (searchTerm.trim()) {
       const search = searchTerm.toLowerCase();
 
@@ -29,14 +35,18 @@ export default function Gallery() {
       });
     }
 
+    // =========================
     // FILTER
+    // =========================
     if (selectedTopic !== "All") {
       results = results.filter(
         (item) => item.topic === selectedTopic
       );
     }
 
+    // =========================
     // SORT
+    // =========================
     if (sortBy === "newest") {
       results.sort(
         (a, b) => new Date(b.date) - new Date(a.date)
@@ -55,8 +65,11 @@ export default function Gallery() {
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-slate-950">
 
-      {/* HERO */}
+      {/* =========================
+          HERO
+      ========================= */}
       <section className="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
+
         <div className="mx-auto max-w-7xl px-6 py-16 lg:px-8">
 
           <p className="text-sm font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">
@@ -74,10 +87,13 @@ export default function Gallery() {
           </p>
 
         </div>
+
       </section>
 
 
-      {/* SEARCH + FILTERS */}
+      {/* =========================
+          SEARCH + FILTERS
+      ========================= */}
       <section className="mx-auto max-w-7xl px-6 py-10 lg:px-8">
 
         <div className="rounded-2xl border border-slate-200 bg-white p-6 dark:border-slate-800 dark:bg-slate-900">
@@ -100,10 +116,13 @@ export default function Gallery() {
         </div>
 
 
-        {/* RESULTS HEADER */}
+        {/* =========================
+            RESULTS HEADER
+        ========================= */}
         <div className="mt-10 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
 
           <div>
+
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white">
               Explore the Gallery
             </h2>
@@ -115,28 +134,36 @@ export default function Gallery() {
                 : "learning resources"}{" "}
               found
             </p>
+
           </div>
 
         </div>
 
 
-        {/* RESULTS */}
+        {/* =========================
+            RESULTS
+        ========================= */}
         {filteredContent.length > 0 ? (
 
           <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
             {filteredContent.map((item) => (
+
               <GalleryCard
                 key={item.id}
                 item={item}
+                onClick={() => setSelectedItem(item)}
               />
+
             ))}
 
           </div>
 
         ) : (
 
-          /* EMPTY STATE */
+          /* =========================
+             EMPTY STATE
+          ========================= */
           <div className="mt-6 rounded-2xl border border-dashed border-slate-300 bg-white px-6 py-16 text-center dark:border-slate-700 dark:bg-slate-900">
 
             <div className="mx-auto max-w-md">
@@ -173,7 +200,21 @@ export default function Gallery() {
 
         )}
 
+
       </section>
+
+
+      {/* =========================
+          LEARNING MODAL
+      ========================= */}
+      {selectedItem && (
+
+        <GalleryModal
+          item={selectedItem}
+          onClose={() => setSelectedItem(null)}
+        />
+
+      )}
 
     </main>
   );
