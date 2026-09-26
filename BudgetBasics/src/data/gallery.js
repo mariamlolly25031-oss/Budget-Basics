@@ -1,5 +1,5 @@
 import needsvswants from "../assets/needs&wants.jpeg";
-import chart50_30_20 from "../assets/chart50_30_20.jpg";
+import chart50_30_20 from "../assets/Chart50_30_20.jpg";
 import expenses from "../assets/expenses.jpeg";
 import savingsgoal from "../assets/track.jpeg";
 import monthlycycle from "../assets/monthlycycle.jpeg";
