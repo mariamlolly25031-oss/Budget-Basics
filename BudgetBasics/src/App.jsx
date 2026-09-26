@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import ScrollToTop from "./Components/ScrollToTop";
 
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
@@ -22,6 +23,9 @@ import TipTicker from "./Components/TipTicker";
 function App() {
   return (
     <div className="min-h-screen bg-white text-[#0F172A]">
+      {/* ScrollToTop renders here so it listens to route changes */}
+      <ScrollToTop />
+
       <Navbar />
 
       <main>
@@ -46,9 +50,9 @@ function App() {
       </main>
 
       <Footer />
-      <TipTicker/>
-      <BudgetBee/>
-      <BackToTop/>
+      <TipTicker />
+      <BudgetBee />
+      <BackToTop />
     </div>
   );
 }
