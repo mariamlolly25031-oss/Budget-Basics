@@ -144,11 +144,7 @@ export default function SiteMap() {
 
       {/* ==================== HEADER ==================== */}
       <section className="border-b border-slate-200 bg-white dark:border-slate-800 dark:bg-slate-900">
-        <div className="mx-auto max-w-6xl px-6 py-16 lg:px-8">
-
-          <p className="text-sm font-bold uppercase tracking-widest text-blue-600 dark:text-blue-400">
-            Navigate BudgetBasics
-          </p>
+        <div className="mx-auto max-w-6xl px-6 py-14 lg:px-8">
 
           <h1 className="mt-3 text-4xl font-bold tracking-tight text-slate-900 dark:text-white md:text-5xl">
             Site Map
@@ -167,10 +163,6 @@ export default function SiteMap() {
       <section className="mx-auto max-w-6xl px-6 py-12 lg:px-8">
 
         <div className="mb-6">
-
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-            Educational Content
-          </span>
 
           <h2 className="mt-1 text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl">
             Learn
@@ -198,10 +190,6 @@ export default function SiteMap() {
         <div className="mx-auto max-w-6xl px-6 py-12 lg:px-8">
 
           <div className="mb-6">
-
-            <span className="text-xs font-bold uppercase tracking-wider text-emerald-600 dark:text-emerald-400">
-              Interactive Tools
-            </span>
 
             <h2 className="mt-1 text-2xl font-extrabold text-slate-900 dark:text-white sm:text-3xl">
               Tools
